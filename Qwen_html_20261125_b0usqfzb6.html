@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English A2 Lesson: Present Simple</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --success: #2ec4b6;
+            --error: #e71d36;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), #3a0ca3);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grammar-box {
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px dashed var(--primary);
+        }
+
+        .grammar-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .grammar-box li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .grammar-box li::before {
+            content: "📌";
+            position: absolute;
+            left: 0;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .question.correct {
+            background: #e6fffa;
+            border-color: var(--success);
+        }
+
+        .question.incorrect {
+            background: #fff5f5;
+            border-color: var(--error);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 150px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        input[type="text"].input-correct {
+            border-color: var(--success);
+            background-color: #e6fffa;
+        }
+
+        input[type="text"].input-incorrect {
+            border-color: var(--error);
+            background-color: #fff5f5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .option-label:hover {
+            background: #f0f0f0;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #3a0ca3;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-reset {
+            background: var(--text-light);
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        #results {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .feedback {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct-text { color: var(--success); }
+        .feedback.incorrect-text { color: var(--error); }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .card { padding: 15px; }
+            input[type="text"] { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🇬🇧 English A2: Present Simple</h1>
+        <p>Daily routines, habits, and general facts</p>
+    </header>
+
+    <!-- Grammar Reminder -->
+    <div class="card">
+        <h2>📚 Quick Grammar Reminder</h2>
+        <div class="grammar-box">
+            <ul>
+                <li><strong>I / You / We / They:</strong> work | don't work | <em>Do</em> you work?</li>
+                <li><strong>He / She / It:</strong> work<strong>s</strong> | doesn't work | <em>Does</em> he work?</li>
+            </ul>
+        </div>
+        <p><em>Tip: Remember to add <strong>-s</strong> or <strong>-es</strong> for He, She, and It in affirmative sentences!</em></p>
+    </div>
+
+    <!-- Activity 1 -->
+    <div class="card">
+        <h2>✍️ Activity 1: Fill in the blanks</h2>
+        <p style="margin-bottom: 15px; color: var(--text-light);">Type the correct form of the verb in brackets. Use short forms for negatives (don't / doesn't).</p>
+        
+        <div class="question" id="q1_1">
+            <div class="question-text">1. She <input type="text" id="a1_1" placeholder="(read)"> books every evening.</div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question" id="q1_2">
+            <div class="question-text">2. We <input type="text" id="a1_2" placeholder="(not / like)"> spicy food.</div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question" id="q1_3">
+            <div class="question-text">3. My brother <input type="text" id="a1_3" placeholder="(play)"> football on Saturdays.</div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question" id="q1_4">
+            <div class="question-text">4. I <input type="text" id="a1_4" placeholder="(not / watch)"> TV in the morning.</div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question" id="q1_5">
+            <div class="question-text">5. The train <input type="text" id="a1_5" placeholder="(leave)"> at 8 PM.</div>
+            <div class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- Activity 2 -->
+    <div class="card">
+        <h2>❓ Activity 2: Choose "Do" or "Does"</h
